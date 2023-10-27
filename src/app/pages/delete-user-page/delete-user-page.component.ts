@@ -29,7 +29,6 @@ export class DeleteUserPageComponent {
           this.snackbarService.showSnackbarSuccess('Sucesso!');
           return;
         }
-        this.snackbarService.showSnackbarError('Erro!');
       },
       error: (error) => {
         this.snackbarService.showSnackbarError('Erro!');

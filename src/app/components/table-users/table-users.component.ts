@@ -14,7 +14,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 export class TableUsersComponent implements OnInit {
   @Input() user: IUsersApiModel | undefined;
   porPagina = 10;
-  private page = 1;
+  page = 1;
 
   listaDeUsuarios: IUsersApiModel[] = [];
   listaDeUsuariosCompleta: IUsersApiModel[] = [];
@@ -37,7 +37,6 @@ export class TableUsersComponent implements OnInit {
           this.snackbarService.showSnackbarSuccess('Sucesso!');
           return;
         }
-        this.snackbarService.showSnackbarError('Erro!');
       },
       error: (error) => {
         this.snackbarService.showSnackbarError('Erro!');

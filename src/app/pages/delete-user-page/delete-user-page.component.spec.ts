@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DeleteUserPageComponent } from './delete-user-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpResponse } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {
   MatDialogModule,
@@ -38,28 +38,26 @@ describe('DeleteUserPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('deve chamar deleteUser e mensagem de sucesso no snackbar', () => {
-  //   const userId = 7;
-  //   const response = {
-  //     /* */
-  //   };
-
-  //   spyOn(reqresApiService, 'deleteUser').and.returnValue(of(response));
-  //   spyOn(snackbarService, 'showSnackbarSuccess');
-
-  //   component.deleteUser(userId);
-
-  //   expect(reqresApiService.deleteUser).toHaveBeenCalledWith(userId);
-  //   expect(snackbarService.showSnackbarSuccess).toHaveBeenCalledWith(
-  //     'Sucesso!'
-  //   );
-  // });
-
-  it('deve chamar deleteUser e mensagem de erro no snackbar', () => {
+  it('deve chamar deleteUser e mostrar mensagem de sucesso no snackbar', () => {
     const userId = 7;
-    const error = new Error('Erro!');
+    const response = new HttpResponse({ status: 204 }); // Use o HttpResponse para simular a resposta
 
-    spyOn(reqresApiService, 'deleteUser').and.returnValue(throwError(error));
+    spyOn(reqresApiService, 'deleteUser').and.returnValue(of(response));
+    spyOn(snackbarService, 'showSnackbarSuccess');
+
+    component.deleteUser(userId);
+
+    expect(reqresApiService.deleteUser).toHaveBeenCalledWith(userId);
+    expect(snackbarService.showSnackbarSuccess).toHaveBeenCalledWith(
+      'Sucesso!'
+    );
+  });
+
+  it('deve chamar deleteUser e mostrar mensagem de erro no snackbar em caso de erro', () => {
+    const userId = 7;
+    const errorResponse = new HttpResponse({ status: 500 });
+
+    spyOn(reqresApiService, 'deleteUser').and.returnValue(throwError(errorResponse));
     spyOn(snackbarService, 'showSnackbarError');
 
     component.deleteUser(userId);

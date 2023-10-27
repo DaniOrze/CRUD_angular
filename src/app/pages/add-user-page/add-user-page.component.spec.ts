@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddUserPageComponent } from './add-user-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
@@ -13,6 +13,7 @@ import { ReqresApiService } from 'src/app/services/reqres-api/reqres-api.service
 import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 import { of, throwError } from 'rxjs';
 import { mockedPostRequest } from 'src/mocks/usuario.mocks';
+import { IUsersApiResponsePostModel } from 'src/app/interfaces/iusers-api-model';
 
 describe('AddUserPageComponent', () => {
   let component: AddUserPageComponent;
@@ -45,43 +46,5 @@ describe('AddUserPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  // it('deve mandar o formulário positivo', () => {
-  //   // Crie um esboço da função postUser no serviço de API
-  //   const mockUserData = mockedPostRequest;
-  //   const userService = TestBed.inject(ReqresApiService);
-  //   const snackbarService = TestBed.inject(SnackbarService);
-  //   spyOn(userService, 'postUser').and.returnValue(of(mockUserData));
-  //   spyOn(snackbarService, 'showSnackbarSuccess');
-
-  //   component.postUserForm.setValue(mockUserData);
-
-  //   component.submitForm();
-
-  //   expect(userService.postUser).toHaveBeenCalledWith(mockUserData);
-  //   expect(snackbarService.showSnackbarSuccess).toHaveBeenCalledWith('Sucesso!');
-  // });
-
-  // it('deve mandar o formulário negativo', () => {
-  //   // Crie um esboço da função postUser no serviço de API para simular um erro
-  //   const mockError = new Error('Erro ao fazer a solicitação:');
-  //   const userService = TestBed.inject(ReqresApiService);
-  //   const snackbarService = TestBed.inject(SnackbarService);
-
-  //   const consoleErrorSpy = spyOn(console, 'error');
-
-  //   spyOn(userService, 'postUser').and.returnValue(throwError(mockError));
-  //   spyOn(snackbarService, 'showSnackbarError');
-
-  //   const mockUserData = mockedPostRequest;
-  //   component.postUserForm.setValue(mockUserData);
-
-  //   component.submitForm();
-
-  //   expect(userService.postUser).toHaveBeenCalledWith(mockUserData);
-  //   expect(snackbarService.showSnackbarError).toHaveBeenCalledWith('Erro!');
-  //   expect(consoleErrorSpy).toHaveBeenCalledWith('Erro ao fazer a solicitação:', mockError);
-  //   consoleErrorSpy.and.callThrough();
-  // });
 
 });
