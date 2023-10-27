@@ -5,7 +5,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SingleUserPageComponent } from './single-user-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialogModule,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -28,9 +32,7 @@ describe('SingleUserPageComponent', () => {
         { provide: MAT_DIALOG_DATA, useValue: {} },
         { provide: MatDialogRef, useValue: {} },
       ],
-      declarations: [
-        SingleUserPageComponent,
-        UserCardComponent]
+      declarations: [SingleUserPageComponent, UserCardComponent],
     });
     fixture = TestBed.createComponent(SingleUserPageComponent);
     component = fixture.componentInstance;

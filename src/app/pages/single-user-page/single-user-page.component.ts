@@ -39,7 +39,6 @@ export class SingleUserPageComponent implements OnInit, OnDestroy {
           this.snackbarService.showSnackbarSuccess('Sucesso!');
           return;
         }
-        this.snackbarService.showSnackbarError('Erro!');
       },
       error: (error) => {
         this.snackbarService.showSnackbarError('Erro!');

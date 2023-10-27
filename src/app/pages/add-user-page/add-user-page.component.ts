@@ -47,7 +47,6 @@ export class AddUserPageComponent implements OnInit {
           this.snackbarService.showSnackbarSuccess('Sucesso!');
           return;
         }
-        this.snackbarService.showSnackbarError('Erro!');
       },
       error: (error) => {
         this.snackbarService.showSnackbarError('Erro!');

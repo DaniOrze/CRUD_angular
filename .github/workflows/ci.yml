@@ -1,0 +1,63 @@
+name: CI pull Request
+run-name: ${{ github.actor }} is testing out 🚀
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  Build-Application:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt update
+      - run: sudo apt-get install nodejs -y
+      - run: sudo apt install npm
+      - run: nodejs -v
+      - run: npm -v
+      - run: npm install -g @angular/cli
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: npm install
+      - run: ng build
+  Unit-Tests-Application:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt update
+      - run: sudo apt-get install nodejs -y
+      - run: sudo apt install npm
+      - run: nodejs -v
+      - run: npm -v
+      - run: npm install -g @angular/cli
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: npm install
+      - run: npm ci
+      - run: npm run test:prod
+  Lint-Application:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo apt update
+      - run: sudo apt-get install nodejs -y
+      - run: sudo apt install npm
+      - run: nodejs -v
+      - run: npm -v
+      - run: npm install -g @angular/cli
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: npm install
+      - run: npm ci
+      - run: npm run lint
+  Deploy-Preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
