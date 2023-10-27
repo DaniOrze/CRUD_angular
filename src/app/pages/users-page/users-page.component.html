@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="container-input">
+    <app-table-users [user]="user"> </app-table-users>
+  </div>
+
+  <div class="button-card">
+    <button class="custom-button" mat-raised-button (click)="openDialogCreateUser('0ms', '0ms')">Adicionar novo
+      Usuário</button>
+    <button class="custom-button" mat-raised-button (click)="exportCSV()">Download como CSV</button>
+    <button class="custom-button" mat-raised-button (click)="exportPDF()">Download como PDF</button>
+    <button class="custom-button" mat-raised-button (click)="exportXLSX()">Download como XLSX</button>
+
+  </div>
+</div>

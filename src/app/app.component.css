@@ -1,0 +1,16 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.inner-content {
+  padding: 24px;
+  background: #fff;
+  height: 100%;
+}
+
+.content {
+  margin: 40px;
+  flex: 1;
+}

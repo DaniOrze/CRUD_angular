@@ -1,0 +1,25 @@
+.container-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.example-button-container {
+  margin-top: 10px;
+}
+
+.mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
+  --mdc-fab-container-color: #f0f2f5;
+  --mat-mdc-fab-color: black;
+ }

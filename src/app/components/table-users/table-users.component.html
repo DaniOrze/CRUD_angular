@@ -1,0 +1,56 @@
+<section class="pesquisa">
+  <form>
+    <mat-form-field class="example-full-width">
+      <mat-label>Pesquisar por usuário</mat-label>
+      <input matInput type="text" #filter>
+    </mat-form-field>
+    <button class="search-button" mat-raised-button (click)="filterResults(filter.value)">Buscar</button>
+  </form>
+</section>
+
+<table id="table" mat-table [dataSource]="listaDeUsuarios" class="mat-elevation-z8">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let user"> {{ user.id }} </td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let user"> {{ user.email }} </td>
+  </ng-container>
+
+  <!-- Primeiro Nome Column -->
+  <ng-container matColumnDef="first_name">
+    <th mat-header-cell *matHeaderCellDef> Primeiro Nome </th>
+    <td mat-cell *matCellDef="let user"> {{ user.first_name }} </td>
+  </ng-container>
+
+  <!-- Último Nome Column -->
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef> Último Nome </th>
+    <td mat-cell *matCellDef="let user"> {{ user.last_name }} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <td mat-cell *matCellDef="let user">
+      <button mat-mini-fab class="custom-button" (click)="openDialogEdit('0ms', '0ms', user)">
+        <mat-icon>edit</mat-icon> </button>
+      <button mat-mini-fab class="custom-button" [routerLink]="['/detail', user?.id]">
+        <mat-icon>remove_red_eye</mat-icon> </button>
+      <button mat-mini-fab class="custom-button" (click)="openDialogDelete('0ms', '0ms', user)">
+        <mat-icon>delete</mat-icon> </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let user; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [length]="listaDeUsuariosCompleta.length" [pageSize]="porPagina" [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPageChange($event)">
+</mat-paginator>

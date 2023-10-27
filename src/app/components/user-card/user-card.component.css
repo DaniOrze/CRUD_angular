@@ -1,0 +1,38 @@
+.container {
+  width: 250px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-mdc-card {
+  background-color: #f0f2f5;
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.mat-mdc-card-subtitle {
+  color: black;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+
+.button-card {
+display: flex;
+gap: 20px;
+justify-content: center;
+align-items: center;
+}
+
+.mat-mdc-fab.mat-accent, .mat-mdc-mini-fab.mat-accent {
+  --mdc-fab-container-color: #fff;
+  --mat-mdc-fab-color: black;
+ }
+
+ .mat-mdc-fab, .mat-mdc-mini-fab {
+  box-shadow: 0px 0px 0px 0px;
+ }

@@ -1,0 +1,7 @@
+button {
+  margin-right: 8px;
+}
+
+:host ::ng-deep .mat-mdc-text-field-wrapper {
+  width: 350px;
+}

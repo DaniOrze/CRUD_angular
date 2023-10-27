@@ -1,0 +1,21 @@
+<div class="container">
+  <mat-card class="example-card">
+    <img mat-card-image src="{{ user?.avatar }}">
+    <mat-card-content>
+      <mat-card-header>
+        <div mat-card-avatar ></div>
+        <mat-card-title>{{ user?.first_name }}</mat-card-title>
+        <mat-card-subtitle>{{ user?.last_name }}</mat-card-subtitle>
+      </mat-card-header>
+      <p>
+        {{ user?.email }}
+      </p>
+      <div class="button-card">
+        <button mat-mini-fab class="custom-button" (click)="openDialogEdit('0ms', '0ms')">
+          <mat-icon>edit</mat-icon> </button>
+            <button mat-mini-fab class="custom-button"  (click)="openDialogDelete('0ms', '0ms')">
+              <mat-icon>delete</mat-icon> </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

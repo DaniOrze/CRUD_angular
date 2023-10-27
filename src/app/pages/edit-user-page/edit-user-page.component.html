@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Editar Usuário</h1>
+<div mat-dialog-content>
+  <form class="box" [formGroup]="putUserForm" (ngSubmit)="submitForm()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Primeiro Nome</mat-label>
+      <input matInput placeholder="Joe" formControlName="first_name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Último Nome</mat-label>
+      <input matInput placeholder="Doe" formControlName="last_name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Avatar</mat-label>
+      <input matInput formControlName="avatar">
+    </mat-form-field>
+        <button class="custom-button" mat-raised-button type="submit">Editar Usuário</button>
+  </form>
+</div>
+<div mat-dialog-actions>
+</div>
