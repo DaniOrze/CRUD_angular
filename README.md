@@ -1,27 +1,106 @@
-# DesafioTecnicoUpflux
+# Front-End Developer Challenge - User Management UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![REST API](https://img.shields.io/badge/REST%20API-02569B?style=for-the-badge&logo=rest&logoColor=white)
+![material_ui](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
+![RxJS](https://img.shields.io/badge/RxJS-B7178C?style=for-the-badge&logo=reactivex&logoColor=white)
+![Jasmine](https://img.shields.io/badge/Jasmine-8A4182?style=for-the-badge&logo=jasmine&logoColor=white)
+![eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+![prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
 
-## Development server
+Este projeto tem como objetivo demonstrar a criação de UIs para gerenciar dados de usuários, utilizando Angular 16, com a integração de uma API REST para manipulação dos dados. A aplicação permite operações de CRUD (Criar, Ler, Atualizar, Excluir) sobre a entidade [Usuário], com uma tela principal e uma tela de detalhes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<p align="center">
+  <p>
+    <img src="src/assets/first_page.png" width="400px" height='300px' />
+    <img src="src/assets/search.png" width="400px" height='300px'/>
+  </p>
+    <p>
+    <img src="src/assets/add_user_page.png" width="400px" />
+    <img src="src/assets/edit_user_page.png" width="400px" />
+  </p>
+    <p>
+    <img src="src/assets/details_page.png" width="400px"/>
+    <img src="src/assets/delete_page.png" width="400px"/>
+  </p>
+      <p>
+    <img src="src/assets/snackbar_erro.png" width="400px"/>
+    <img src="src/assets/snackbar_sucess.png" width="400px"/>
+  </p>
+</p>
 
-## Code scaffolding
+## Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [x] Interface amigável com a utilização do Material UI do Angular.
+- [x] Tela Principal:
+  - [x] Lista com resumo dos dados dos usuários.
+  - [x] Exportação dos dados visíveis para PDF ou Excel (CSV ou XSLX).
+  - [x] Inclusão de novos dados através de um modal.
+  - [x] Campo de pesquisa rápida (Client Side).
+  - [x] Opções de alteração e exclusão de um usuário através de um modal.
+  - [x] Visualização de detalhes para cada usuário na lista.
+- [x] Tela de Detalhes:
+  - [x] Apresentação de todos os dados cadastrados do usuário selecionado, incluindo avatar.
+  - [x] Opção de editar ou deletar usuário.
+  - [x] Opção de retornar à Tela Principal.
+- [x] Programação reativa com RxJS para lidar com fluxos de dados assíncronos.
+- [x] Snackbars laterais com mensagens de sucesso e erro em todas as requests.
+- [x] Validações da obrigatoriedade do preenchimento completo dos formulários.
 
-## Build
+## Pré-requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para executar este projeto localmente, é necessário ter instalado:
 
-## Running unit tests
+- Node.js
+- npm (Node Package Manager)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Iniciando
 
-## Running end-to-end tests
+- Clone o repositório para sua máquina:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+git clone https://github.com/DaniOrze/desafio_tecnico_daniele.git
+```
 
-## Further help
+- Navegue até a pasta do projeto:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+cd desafio_tecnico_daniele
+```
+
+### Rodando o Front-end
+
+- Instale as dependências:
+
+```bash
+npm install
+```
+
+- Execute a aplicação:
+
+```bash
+ng serve
+```
+
+A aplicação será iniciada no navegador padrão em: `http://localhost:4200`
+
+### Executandos os testes unitários
+
+```bash
+ng test
+```
+
+### Executandos os testes unitários com cobertura
+
+```bash
+ng test --code-coverage --source-map
+```
+
+
+## Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request para o repositório.
+
+## Licença
+
+Este projeto está licenciado sob a licença [MIT](./LICENSE).
