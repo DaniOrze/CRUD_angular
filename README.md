@@ -39,6 +39,7 @@ Este projeto tem como objetivo demonstrar a criação de UIs para gerenciar dado
   - [x] Campo de pesquisa rápida (Client Side).
   - [x] Opções de alteração e exclusão de um usuário através de um modal.
   - [x] Visualização de detalhes para cada usuário na lista.
+  - [x] Paginação para a listagem da tabela.
 - [x] Tela de Detalhes:
   - [x] Apresentação de todos os dados cadastrados do usuário selecionado, incluindo avatar.
   - [x] Opção de editar ou deletar usuário.
@@ -46,6 +47,9 @@ Este projeto tem como objetivo demonstrar a criação de UIs para gerenciar dado
 - [x] Programação reativa com RxJS para lidar com fluxos de dados assíncronos.
 - [x] Snackbars laterais com mensagens de sucesso e erro em todas as requests.
 - [x] Validações da obrigatoriedade do preenchimento completo dos formulários.
+- [x] Validações da formato de e-mail nos formulários.
+- [x] Validações da formato de url para avatar nos formulários.
+- [x] Links de "mailto" em todos os e-mails que aparecem no projeto.
 
 ## Pré-requisitos
 
