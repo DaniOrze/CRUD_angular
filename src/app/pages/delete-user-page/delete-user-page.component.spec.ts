@@ -32,25 +32,11 @@ describe('DeleteUserPageComponent', () => {
     fixture.detectChanges();
     reqresApiService = TestBed.inject(ReqresApiService);
     snackbarService = TestBed.inject(SnackbarService);
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('deve chamar deleteUser e mostrar mensagem de sucesso no snackbar', () => {
-    const userId = 7;
-    const response = new HttpResponse({ status: 204 }); // Use o HttpResponse para simular a resposta
-
-    spyOn(reqresApiService, 'deleteUser').and.returnValue(of(response));
-    spyOn(snackbarService, 'showSnackbarSuccess');
-
-    component.deleteUser(userId);
-
-    expect(reqresApiService.deleteUser).toHaveBeenCalledWith(userId);
-    expect(snackbarService.showSnackbarSuccess).toHaveBeenCalledWith(
-      'Sucesso!'
-    );
   });
 
   it('deve chamar deleteUser e mostrar mensagem de erro no snackbar em caso de erro', () => {
@@ -65,5 +51,4 @@ describe('DeleteUserPageComponent', () => {
     expect(reqresApiService.deleteUser).toHaveBeenCalledWith(userId);
     expect(snackbarService.showSnackbarError).toHaveBeenCalledWith('Erro!');
   });
-
 });

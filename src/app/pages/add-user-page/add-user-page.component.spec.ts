@@ -10,10 +10,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReqresApiService } from 'src/app/services/reqres-api/reqres-api.service';
-import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
-import { of, throwError } from 'rxjs';
-import { mockedPostRequest } from 'src/mocks/usuario.mocks';
-import { IUsersApiResponsePostModel } from 'src/app/interfaces/iusers-api-model';
 
 describe('AddUserPageComponent', () => {
   let component: AddUserPageComponent;
