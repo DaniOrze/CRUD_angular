@@ -31,10 +31,10 @@ export class EditUserPageComponent implements OnInit {
 
   createPutUserForm(): void {
     this.putUserForm = this.formBuilder.group({
-      email: [this.data.email, Validators.required],
+      email: [this.data.email, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
       first_name: [this.data.first_name, Validators.required],
       last_name: [this.data.last_name, Validators.required],
-      avatar: [this.data.avatar, Validators.required],
+      avatar: [this.data.avatar, [Validators.required, Validators.pattern(/^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/)]],
       id: this.userID,
     });
   }
@@ -51,9 +51,11 @@ export class EditUserPageComponent implements OnInit {
     this.usersApi.putUser(formData).subscribe({
       next: (response) => {
         if (response.status == 200) {
-          this.snackbarService.showSnackbarSuccess('Sucesso!');
+          this.snackbarService.showSnackbarSuccess('Usuário editado com sucesso!');
+          this.dialogRef.close();
           return;
         }
+        this.snackbarService.showSnackbarError('Não foi possível editar usuário!');
       },
       error: (error) => {
         this.snackbarService.showSnackbarError('Erro!');

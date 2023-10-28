@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IUsersApiModel } from 'src/app/interfaces/iusers-api-model';
 import { DeleteUserPageComponent } from 'src/app/pages/delete-user-page/delete-user-page.component';
 import { EditUserPageComponent } from 'src/app/pages/edit-user-page/edit-user-page.component';
 import { ReqresApiService } from 'src/app/services/reqres-api/reqres-api.service';
-import { MatPaginatorIntl } from '@angular/material/paginator';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-table-users',
@@ -16,16 +16,19 @@ export class TableUsersComponent implements OnInit {
   porPagina = 10;
   page = 1;
 
+  @ViewChild('filter', {static: true}) filterInput!: ElementRef;
+
   listaDeUsuarios: IUsersApiModel[] = [];
   listaDeUsuariosCompleta: IUsersApiModel[] = [];
-  snackbarService: any;
+  totalElementos = this.porPagina * this.page;
 
-  constructor(public usersApi: ReqresApiService, public dialog: MatDialog) {}
+  constructor(public usersApi: ReqresApiService, public dialog: MatDialog, private snackbarService: SnackbarService) {}
 
   onPageChange(event: any): void {
-    this.page = event.pageIndex + 1; // pageIndex começa em 0
+    this.page = event.pageIndex + 1;
     this.porPagina = event.pageSize;
     this.loadUsers();
+    this.filterInput.nativeElement.value = '';
   }
 
   loadUsers(): void {
@@ -34,10 +37,13 @@ export class TableUsersComponent implements OnInit {
         if (response.status == 200) {
           this.listaDeUsuarios = response.body?.data!;
           this.listaDeUsuariosCompleta = response.body?.data!;
+          this.totalElementos = response.body?.total!;
           return;
         }
+        this.snackbarService.showSnackbarError('Erro ao carregar usuários!');
       },
       error: (error) => {
+        this.snackbarService.showSnackbarError('Erro ao carregar usuários!');
       },
     });
   }
@@ -95,6 +101,7 @@ export class TableUsersComponent implements OnInit {
   filterResults(text: string) {
     if (!text) {
       this.listaDeUsuarios = this.listaDeUsuariosCompleta;
+      return;
     }
     this.listaDeUsuarios = this.listaDeUsuariosCompleta.filter(
       (user) =>

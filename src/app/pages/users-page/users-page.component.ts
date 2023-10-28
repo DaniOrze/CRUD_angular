@@ -8,6 +8,7 @@ import {
   ExportAsService,
   SupportedExtensions,
 } from 'ngx-export-as';
+import { SnackbarService } from 'src/app/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-users-page',
@@ -19,12 +20,12 @@ export class UsersPageComponent implements OnInit {
   user: IUsersApiModel | undefined;
 
   listaDeUsuarios: IUsersApiModel[] = [];
-  filtroNome: string = '';
 
   constructor(
     public usersApi: ReqresApiService,
+    private snackbarService: SnackbarService,
     public dialog: MatDialog,
-    private exportAsService: ExportAsService
+    private exportAsService: ExportAsService,
   ) {}
 
   ngOnInit(): void {  }
@@ -47,14 +48,17 @@ export class UsersPageComponent implements OnInit {
 
   exportCSV() {
     this.exportAsFile('csv');
+    this.snackbarService.showSnackbarSuccess('Tabela exportada para CSV!');
   }
 
   exportPDF() {
     this.exportAsFile('pdf');
+    this.snackbarService.showSnackbarSuccess('Tabela exportada para PDF!');
   }
 
   exportXLSX() {
     this.exportAsFile('xlsx');
+    this.snackbarService.showSnackbarSuccess('Tabela exportada para XLSX!');
   }
 
   exportAsFile(format: SupportedExtensions) {
