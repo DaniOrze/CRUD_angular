@@ -7,3 +7,14 @@ mat-toolbar {
   font-size: 15px;
   font-weight: 400;
 }
+
+a {
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  transition: 0.3s;
+  color: rgb(221, 219, 219);
+}

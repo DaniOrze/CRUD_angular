@@ -14,7 +14,7 @@ export class AddUserPageComponent implements OnInit {
     public usersApi: ReqresApiService,
     public dialogRef: MatDialogRef<AddUserPageComponent>,
     private formBuilder: FormBuilder,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
   ) {}
 
   ngOnInit(): void {
@@ -25,10 +25,10 @@ export class AddUserPageComponent implements OnInit {
 
   createPostUserForm(): void {
     this.postUserForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      avatar: ['', Validators.required],
+      avatar: ['', [Validators.required, Validators.pattern(/^(http(s)?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/)]],
     });
   }
 
@@ -44,9 +44,11 @@ export class AddUserPageComponent implements OnInit {
     this.usersApi.postUser(formData).subscribe({
       next: (response) => {
         if (response.status == 201) {
-          this.snackbarService.showSnackbarSuccess('Sucesso!');
+          this.snackbarService.showSnackbarSuccess('Usuário adicionado com sucesso!');
+          this.dialogRef.close();
           return;
         }
+        this.snackbarService.showSnackbarError('Não foi possível adicionar usuário!');
       },
       error: (error) => {
         this.snackbarService.showSnackbarError('Erro!');

@@ -4,7 +4,7 @@
       <mat-label>Pesquisar por usuário</mat-label>
       <input matInput type="text" #filter>
     </mat-form-field>
-    <button class="search-button" mat-raised-button (click)="filterResults(filter.value)">Buscar</button>
+    <button class="search-button" mat-raised-button (click)="filterResults(filter.value)">Pesquisar</button>
   </form>
 </section>
 
@@ -19,7 +19,7 @@
   <!-- Email Column -->
   <ng-container matColumnDef="email">
     <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let user"> {{ user.email }} </td>
+    <td mat-cell *matCellDef="let user"><a href="mailto:{{ user.email }}">{{ user.email }}</a> </td>
   </ng-container>
 
   <!-- Primeiro Nome Column -->
@@ -49,8 +49,13 @@
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let user; columns: displayedColumns;"></tr>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" [colSpan]="displayedColumns.length">
+      Usuário não existe
+    </td>
+  </tr>
 </table>
 
-<mat-paginator [length]="listaDeUsuariosCompleta.length" [pageSize]="porPagina" [pageSizeOptions]="[5, 10, 25, 100]"
+<mat-paginator [length]="totalElementos" [pageSize]="porPagina" [pageSizeOptions]="[5, 10, 25, 100]"
   (page)="onPageChange($event)">
 </mat-paginator>

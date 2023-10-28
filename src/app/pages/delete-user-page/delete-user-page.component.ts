@@ -26,9 +26,11 @@ export class DeleteUserPageComponent {
     this.usersApi.deleteUser(id).subscribe({
       next: (response) => {
         if (response.status == 204) {
-          this.snackbarService.showSnackbarSuccess('Sucesso!');
+          this.snackbarService.showSnackbarSuccess('Usuário deletado com sucesso!');
+          this.dialogRef.close();
           return;
         }
+        this.snackbarService.showSnackbarError('Não foi possível deletar usuário!');
       },
       error: (error) => {
         this.snackbarService.showSnackbarError('Erro!');

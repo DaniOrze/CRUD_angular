@@ -8,7 +8,7 @@
         <mat-card-subtitle>{{ user?.last_name }}</mat-card-subtitle>
       </mat-card-header>
       <p>
-        {{ user?.email }}
+        <a href="mailto:{{ user?.email }}">{{ user?.email }}</a>
       </p>
       <div class="button-card">
         <button mat-mini-fab class="custom-button" (click)="openDialogEdit('0ms', '0ms')">

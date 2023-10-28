@@ -35,3 +35,15 @@ mat-paginator {
   box-shadow: 0px 0px 0px 0px;
 }
 
+a {
+  color: #000;
+}
+
+a:hover {
+  transition: 0.3s;
+  color: #424242;
+}
+
+.mat-mdc-row:hover {
+  background-color: #f0f2f5;
+}

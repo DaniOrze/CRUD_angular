@@ -38,8 +38,10 @@ export class SingleUserPageComponent implements OnInit, OnDestroy {
           this.user = response.body?.data!;
           return;
         }
+        this.snackbarService.showSnackbarError('Erro ao carregar usuários!');
       },
       error: (error) => {
+        this.snackbarService.showSnackbarError('Erro ao carregar usuários!');
       },
     });
   }
