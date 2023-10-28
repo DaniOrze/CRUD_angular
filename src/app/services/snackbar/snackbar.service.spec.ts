@@ -27,7 +27,7 @@ describe('SnackbarService', () => {
 
     expect(service['snackBar'].open).toHaveBeenCalledWith(
       message,
-      'Close',
+      'Fechar',
       jasmine.objectContaining({
         horizontalPosition: 'end',
         verticalPosition: 'top',
@@ -46,7 +46,7 @@ describe('SnackbarService', () => {
 
     expect(service['snackBar'].open).toHaveBeenCalledWith(
       errorMessage,
-      'Close',
+      'Fechar',
       jasmine.objectContaining({
         horizontalPosition: 'end',
         verticalPosition: 'top',

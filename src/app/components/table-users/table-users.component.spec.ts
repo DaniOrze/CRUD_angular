@@ -8,11 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReqresApiService } from 'src/app/services/reqres-api/reqres-api.service';
-import { of } from 'rxjs';
-import {
-  IUsersApiModel,
-  IUsersApiResponseModel,
-} from 'src/app/interfaces/iusers-api-model';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { EditUserPageComponent } from 'src/app/pages/edit-user-page/edit-user-page.component';
 import { mockedGetUmUsuario } from 'src/mocks/usuario.mocks';
@@ -33,6 +30,7 @@ describe('TableUsersComponent', () => {
         MatInputModule,
         MatPaginatorModule,
         BrowserAnimationsModule,
+        MatSnackBarModule
       ],
       declarations: [TableUsersComponent],
       providers: [MatDialog],

@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { AddUserPageComponent } from '../add-user-page/add-user-page.component';
 import { of } from 'rxjs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('UsersPageComponent', () => {
   let component: UsersPageComponent;
@@ -34,6 +35,7 @@ describe('UsersPageComponent', () => {
         MatTableModule,
         BrowserAnimationsModule,
         MatPaginatorModule,
+        MatSnackBarModule
       ],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: {} },
