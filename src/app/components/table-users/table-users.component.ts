@@ -34,12 +34,10 @@ export class TableUsersComponent implements OnInit {
         if (response.status == 200) {
           this.listaDeUsuarios = response.body?.data!;
           this.listaDeUsuariosCompleta = response.body?.data!;
-          this.snackbarService.showSnackbarSuccess('Sucesso!');
           return;
         }
       },
       error: (error) => {
-        this.snackbarService.showSnackbarError('Erro!');
       },
     });
   }

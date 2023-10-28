@@ -36,12 +36,10 @@ export class SingleUserPageComponent implements OnInit, OnDestroy {
       next: (response) => {
         if (response.status == 200) {
           this.user = response.body?.data!;
-          this.snackbarService.showSnackbarSuccess('Sucesso!');
           return;
         }
       },
       error: (error) => {
-        this.snackbarService.showSnackbarError('Erro!');
       },
     });
   }
