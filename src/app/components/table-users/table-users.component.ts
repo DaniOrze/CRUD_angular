@@ -16,13 +16,18 @@ export class TableUsersComponent implements OnInit {
   porPagina = 10;
   page = 1;
 
-  @ViewChild('filter', {static: true}) filterInput!: ElementRef;
+  @ViewChild('filter', { static: true }) filterInput!: ElementRef;
 
   listaDeUsuarios: IUsersApiModel[] = [];
   listaDeUsuariosCompleta: IUsersApiModel[] = [];
   totalElementos = this.porPagina * this.page;
+  totalCompleto = this.totalElementos;
 
-  constructor(public usersApi: ReqresApiService, public dialog: MatDialog, private snackbarService: SnackbarService) {}
+  constructor(
+    public usersApi: ReqresApiService,
+    public dialog: MatDialog,
+    private snackbarService: SnackbarService
+  ) {}
 
   onPageChange(event: any): void {
     this.page = event.pageIndex + 1;
@@ -38,6 +43,7 @@ export class TableUsersComponent implements OnInit {
           this.listaDeUsuarios = response.body?.data!;
           this.listaDeUsuariosCompleta = response.body?.data!;
           this.totalElementos = response.body?.total!;
+          this.totalCompleto = response.body?.total!;
           return;
         }
         this.snackbarService.showSnackbarError('Erro ao carregar usuários!');
@@ -101,6 +107,7 @@ export class TableUsersComponent implements OnInit {
   filterResults(text: string) {
     if (!text) {
       this.listaDeUsuarios = this.listaDeUsuariosCompleta;
+      this.totalElementos = this.totalCompleto;
       return;
     }
     this.listaDeUsuarios = this.listaDeUsuariosCompleta.filter(
@@ -108,5 +115,6 @@ export class TableUsersComponent implements OnInit {
         user?.first_name?.toLowerCase().includes(text.toLowerCase()) ||
         user?.last_name?.toLowerCase().includes(text.toLowerCase())
     );
+    this.totalElementos = this.listaDeUsuarios.length;
   }
 }
