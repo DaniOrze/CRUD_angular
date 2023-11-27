@@ -63,13 +63,13 @@ Para executar este projeto localmente, é necessário ter instalado:
 - Clone o repositório para sua máquina:
 
 ```bash
-git clone https://github.com/DaniOrze/desafio_tecnico_daniele.git
+git clone https://github.com/DaniOrze/CRUD_angular.git
 ```
 
 - Navegue até a pasta do projeto:
 
 ```bash
-cd desafio_tecnico_daniele
+cd CRUD_angular
 ```
 
 ### Rodando o Front-end
